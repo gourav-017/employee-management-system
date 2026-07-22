@@ -7,6 +7,12 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Profile from "./pages/profile/Profile";
 
+import AddEmployee from "./pages/employess/AddEmployee";
+import EditEmployee from "./pages/employess/EditEmployee";
+import ViewEmployee from "./pages/employess/ViewEmployee";
+import EmployeeList from "./pages/employess/EmployeeList";
+import ProtectedRoute from "./middleware/ProtectedRoute";
+
 function App() {
   return (
     <BrowserRouter>
@@ -20,9 +26,25 @@ function App() {
 
         <Route element={<DashboardLayout />}>
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<ProtectedRoute>
+            <Dashboard />
+        </ProtectedRoute>} />
 
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProtectedRoute>
+            <Profile />
+        </ProtectedRoute>} />
+          <Route path="/employees" element={<ProtectedRoute>
+            <EmployeeList />
+        </ProtectedRoute>} />
+          <Route path="/employees/add" element={ <ProtectedRoute>
+            <AddEmployee />
+        </ProtectedRoute>} />
+          <Route path="/employees/edit/:id" element={ <ProtectedRoute>
+            <EditEmployee />
+        </ProtectedRoute>} />
+          <Route path="/employees/view/:id" element={ <ProtectedRoute>
+            <ViewEmployee />
+        </ProtectedRoute>} />
 
         </Route>
 
