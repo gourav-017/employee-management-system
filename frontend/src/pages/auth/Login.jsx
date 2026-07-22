@@ -37,8 +37,8 @@ export default function Login() {
 
       alert(
         error?.response?.data?.detail ||
-          error?.response?.data?.non_field_errors?.[0] ||
-          "Invalid username or password"
+        error?.response?.data?.non_field_errors?.[0] ||
+        "Invalid username or password"
       );
     } finally {
       setLoading(false);
